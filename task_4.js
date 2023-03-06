@@ -8,7 +8,7 @@ let user;
 while (!user) {
   try {
     let name = prompt('What is your name?');
-    let age = parseInt(prompt('What is your age?'));
+    let age = prompt('What is your age?');
 
     if (isNaN(age)) {
       throw new Error('Invalid age');
@@ -17,7 +17,6 @@ while (!user) {
     user = new MakeUsers(name, age);
 
   } catch (error) {
-    console.log(error);
     alert('Invalid input. Please try again.');
   }
 }
