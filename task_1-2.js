@@ -12,7 +12,12 @@ function count(expression){
             case '*':
             return  showResult(multiply(values));
             case '/':
-            return showResult(divide(values))
+                try {
+                    return showResult(divide(values));
+                } catch (error) {
+                    console.log(error);
+                    return 0;
+                }
         }
         function showResult(value){
             return value
@@ -28,13 +33,11 @@ function count(expression){
         return values[0] * values[2];
     }
     function divide(values) {
-        if (values[2] === '0') {
-            return Error("Can't divide by 0");
+        if (values[2] === '0' || values[0] === '0') {
+            throw new Error("Can't divide by 0");
         }
-        return values[0] / values[2];
+        return values[0] / values[2];   
     }
 
 console.log(count('5+2')); 
 console.log(count('6/0')); 
-
-

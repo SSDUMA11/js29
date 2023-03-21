@@ -7,9 +7,15 @@ function count(expression){
     try{
     values = Values(expression);//line1
     }catch(error){
+        if(error.message === 'expression is not iterable'){
             console.log(error.name + ': ' + error.message)
             values = [0, '+', 0];
+        }  
+        else {
+            throw error
+        }   
     }
+    
     switch (values[1]) {
         case '+':
         return  showResult(sum(values));
@@ -36,4 +42,8 @@ function multiply(values) {
 function divide(values) {
     return +values[0] / +values[2];
 }
-console.log(count(5*2));//line2
+try{
+   console.log(count(5*2));//line2 
+} catch (error){
+    console.log(error)
+}
